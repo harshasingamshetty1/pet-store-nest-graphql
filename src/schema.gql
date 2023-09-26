@@ -6,18 +6,35 @@ type Pet {
   id: Int!
   name: String!
   type: String
+  ownerId: Int!
+  owner: Owner!
+}
+
+type Owner {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String!
+  pets: [Pet!]
 }
 
 type Query {
   pets: [Pet!]!
   getPet(id: Float!): Pet!
+  owners: [Owner!]!
+  owner(id: Int!): Owner!
 }
 
 type Mutation {
   createPet(createPetInput: CreatePetInput!): Pet!
+  createOwner(createOwnerInput: CreateOwnerInput!): Owner!
 }
 
 input CreatePetInput {
   name: String!
   type: String
+  ownerId: Int!
+}
+
+input CreateOwnerInput {
+  name: String!
 }

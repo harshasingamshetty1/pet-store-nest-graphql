@@ -1,0 +1,4 @@
+nest generate resource <any_name> 
+This cmd can generate CRUD resource of any REST or GQL or MSC etc
+
+the @OneToMany decorator is used to define a one-to-many relationship between Owner and Pet. The first argument specifies the target entity (Pet), and the second argument defines the inverse side of the relationship by specifying how to link a Pet back to its Owner.
