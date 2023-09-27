@@ -19,7 +19,10 @@ import { OwnersModule } from './owners/owners.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       //in memory db, gets reset, when restarted
-      database: ':memory:',
+      // database: ':memory:',
+      //using db
+      database: 'db.sqlite',
+
       entities: ['dist/**/*.entity{.ts,.js}'],
       //for dev purposes
       synchronize: true,

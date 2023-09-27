@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Pet } from 'src/pets/pet.entity';
 import { Repository } from 'typeorm';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
@@ -19,6 +20,19 @@ export class OwnersService {
 
   findOne(id: number) {
     return this.ownerRepo.findOneOrFail({ where: { id: id } });
+  }
+
+  async getPets(id: number): Promise<Pet[]> {
+    const owners = await this.ownerRepo.find({
+      where: { id },
+      relations: ['pets'],
+    });
+
+    // Extract the 'pets' property from each owner
+    const petsArray = owners.map((owner) => owner.pets).flat();
+    console.log('pets array', petsArray);
+
+    return petsArray;
   }
 
   // update(id: number, updateOwnerInput: UpdateOwnerInput) {

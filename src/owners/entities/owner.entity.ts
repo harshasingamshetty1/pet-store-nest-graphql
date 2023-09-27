@@ -5,7 +5,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 @ObjectType()
 export class Owner {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
+  @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
 
